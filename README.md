@@ -29,7 +29,3 @@ Implement each layer incrementally so the API is secure by design rather than bo
 ## Getting Started
 
 _Setup instructions will be added as the project takes shape (stack, install steps, environment variables, etc.)._
-
-## License
-
-TBD
