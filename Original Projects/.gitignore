@@ -1,0 +1,51 @@
+# ==== Visual Studio ====
+.vs/
+*.vsidx
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.dtbcache*
+applicationhost.config
+
+# ==== Build results ====
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+out/
+
+# ==== .NET ====
+*.dll
+*.pdb
+*.cache
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ==== Node.js (if used) ====
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# ==== Environment / secrets ====
+.env
+.env.local
+*.pfx
+*.key
+
+# ==== OS files ====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==== Logs ====
+*.log
+logs/
+
+# ==== Editor folders ====
+.idea/
+*.swp
