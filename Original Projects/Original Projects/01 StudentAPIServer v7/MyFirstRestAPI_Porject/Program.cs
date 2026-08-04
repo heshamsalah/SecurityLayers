@@ -26,26 +26,20 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             // Ensures the token was issued by a trusted issuer.
             ValidateIssuer = true,
 
-
             // Ensures the token is intended for this API (audience check).
             ValidateAudience = true,
-
 
             // Ensures the token has not expired.
             ValidateLifetime = true,
 
-
             // Ensures the token signature is valid and was signed by the API.
             ValidateIssuerSigningKey = true,
-
 
             // The expected issuer value (must match the issuer used when creating the JWT).
             ValidIssuer = "StudentApi",
 
-
             // The expected audience value (must match the audience used when creating the JWT).
             ValidAudience = "StudentApiUsers",
-
 
             // The secret key used to validate the JWT signature.
             // This must be the same key used when generating the token.
@@ -78,7 +72,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 
-// Enables Swagger UI for testing and documentation.
 // Register Swagger generator and customize its behavior.
 builder.Services.AddSwaggerGen(options =>
 {
@@ -93,28 +86,22 @@ builder.Services.AddSwaggerGen(options =>
         // The name of the HTTP header where the token will be sent.
         Name = "Authorization",
 
-
         // Indicates this is an HTTP authentication scheme.
         Type = SecuritySchemeType.Http,
-
 
         // Specifies the authentication scheme name.
         // Must be exactly "Bearer" for JWT Bearer tokens.
         Scheme = "Bearer",
 
-
         // Optional metadata to describe the token format.
         BearerFormat = "JWT",
-
 
         // Specifies that the token is sent in the request header.
         In = ParameterLocation.Header,
 
-
         // Text shown in Swagger UI to guide the user.
         Description = "Enter: Bearer {your JWT token}"
     });
-
 
     // ===============================
     // 2) Require the Bearer scheme for secured endpoints
@@ -135,7 +122,6 @@ builder.Services.AddSwaggerGen(options =>
                 }
             },
 
-
             // No scopes are required for JWT Bearer authentication.
             // This array is empty because JWT does not use OAuth scopes here.
             new string[] {}
@@ -154,11 +140,19 @@ var app = builder.Build();
 // ===============================
 
 
+// Serve static files (needed for the custom Swagger dark CSS).
+// Must come after 'app' is built, and before UseSwaggerUI.
+app.UseStaticFiles();
+
+
 // Enable Swagger only in development environment.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(options =>
+    {
+        options.InjectStylesheet("/swagger-dark.css");
+    });
 }
 
 
@@ -180,4 +174,3 @@ app.MapControllers();
 
 // Start the application.
 app.Run();
-
