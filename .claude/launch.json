@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "nexchange-expo-web",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "cd /d C:\\Users\\hesha\\OneDrive\\Desktop\\ex && npx expo start --web"],
+      "port": 8081
+    },
+    {
+      "name": "nexchange-expo-go",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "cd /d C:\\Users\\hesha\\OneDrive\\Desktop\\ex && npx expo start --port 8082"],
+      "port": 8082
+    }
+  ]
+}
